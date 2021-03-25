@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Structure Design Theory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Structure design components follow [React Atomic Design](https://github.com/danilowoz/react-atomic-design)
 
-## Available Scripts
+## Structure components Folder
 
-In the project directory, you can run:
+Project directory components includes:
 
-### `yarn start`
+### atoms
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Atoms are the smallest possible components, such as buttons, titles, inputs or event color pallets, animations, and fonts.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+They can be applied on any context, globally or within other components and templates, besides having many states, such as this example of button: disabled, hover, different sizes, etc.
 
-### `yarn test`
+### molecules
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+They are the composition of one or more components of atoms. Here we begin to compose complex components and reuse some of those components. Molecules can have their own properties and create functionalities by using atoms, which don’t have any function or action by themselves.
 
-### `yarn build`
+### organisms
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Organisms are the combination of molecules that work together or even with atoms that compose more elaborate interfaces. At this level, the components begin to have the final shape, but they are still ensured to be independent, portable and reusable enough to be reusable in any content.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### templates
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In this state we stop composing components and begin to set their context. Moreover, the templates create relationships between the organisms and others components through positions, placements and patterns of the pages but it doesn’t have any style, color or component rendered. That’s why it looks like a wireframe.
 
-### `yarn eject`
+### pages
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Pages are the navigate parts of the application and it’s where the components are distributed in one specific template. The components get real content and they’re connected with the whole application. At this stage, we can test the efficiency of the design system to analyse if all the components are independent enough or if we need to split them in smaller parts.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Other folders
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### assets
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Contain `fonts`, `images` and `styles` for project
 
-## Learn More
+### endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Define API endpoints
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### i18n
 
-### Code Splitting
+Contain internationalization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### lib
 
-### Analyzing the Bundle Size
+Contain all shared logic, helper
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### redux
 
-### Making a Progressive Web App
+Contains all files that relates to redux management state
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+It includes `actions`, `contants`, `lib` (shared logic for redux), `reducers` folders
 
-### Advanced Configuration
+### typings
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+If your project uses `typescript`, this folder use to define entity
 
-### Deployment
+EX:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+export interface Model {
+  id: number;
+  title: string;
+}
+```
